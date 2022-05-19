@@ -107,9 +107,9 @@ def csvRead2Up():
     os.remove(data2_file_path)
 
 def dataSending(data):
-    # Sending humidity and temperature data to ThingsBoard
-    # change path - look up more documentation on mqtt
-    #changing the data array into a dictionary
+    ''' Sending humidity and temperature data to ThingsBoard
+     change path - look up more documentation on mqtt
+     changing the data array into a dictionary'''
     fields = ["Date Time", "Temperature", "Humidity", "Pressure", "Light"]
     data = dict(zip(fields, data))
     client.publish('v1/devices/me/telemetry', json.dumps(data), 1)
