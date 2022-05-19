@@ -19,7 +19,7 @@ import threading
 from dotenv import load_dotenv
 
 THINGSBOARD_HOST = 'demo.thingsboard.io'
-load_dotenv('Pimon_Run/.env')
+load_dotenv('Pimon_Run/config.env')
 ACCESS_TOKEN = os.environ.get("ACCESS_TOKEN")
 
 mcp = PCF8574_GPIO(0x27)

@@ -24,17 +24,12 @@ def configSetUp():
                     token = requests.get(url=apiUrl)
                 except:
                     print("Connection timed out try again later")
-                    
-                if token.status_code == 200:
-                    token = token.json()["token"]
-                    with open("Pimon_Run/config.env", "w") as f:
-                        f.write(f"token = {token}")
-                    f.close()
-                elif token.status_code == 400:
-                    print(token.json()["error"])
-                elif token.status_code == 469:
-                    print(token.json()["error"])
             else:
                 break
+
+        with open("config.env", "w") as f:
+            token = requestHandeler(token)
+            f.write(f"token = {token}")
+        f.close()
     
-        
+                
