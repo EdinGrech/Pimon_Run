@@ -11,7 +11,7 @@ def requestHandeler(token):
         return False
 
 def configSetUp():
-    if path.exists("Pimon_Run/.env") == False:
+    if path.exists("Pimon_Run/config.env") == False:
         subprocess.run("pip install -r Pimon_Run/requirements.txt", shell=True)
         apiUrl = "http://" + input("Enter the IP address of the API: ") + ":5000/"
         token = None
@@ -27,7 +27,7 @@ def configSetUp():
             else:
                 break
 
-        with open("config.env", "w") as f:
+        with open("Pimon_Run/config.env", "w") as f:
             token = requestHandeler(token)
             f.write(f"token = {token}")
         f.close()

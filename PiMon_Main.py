@@ -20,7 +20,7 @@ from dotenv import load_dotenv
 
 THINGSBOARD_HOST = 'demo.thingsboard.io'
 load_dotenv('Pimon_Run/config.env')
-ACCESS_TOKEN = os.environ.get("ACCESS_TOKEN")
+ACCESS_TOKEN = os.environ.get("token")
 
 mcp = PCF8574_GPIO(0x27)
 lcd = Adafruit_CharLCD(pin_rs=0, pin_e=2, pins_db=[4,5,6,7], GPIO=mcp)
