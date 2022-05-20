@@ -1,4 +1,4 @@
-import configSetUp
+import Setup.configSetUp as configSetUp
 
 configSetUp.configSetUp()
 
@@ -13,10 +13,11 @@ import os.path
 import paho.mqtt.client as mqtt
 import requests
 import json
-from PCF8574 import PCF8574_GPIO
-from Adafruit_LCD1602 import Adafruit_CharLCD
+from LCDImports.PCF8574 import PCF8574_GPIO
+from LCDImports.Adafruit_LCD1602 import Adafruit_CharLCD
 import threading
 from dotenv import load_dotenv
+import AutoUpdateLib.autoUpdate as autoUpdate
 
 THINGSBOARD_HOST = 'demo.thingsboard.io'
 load_dotenv('Pimon_Run/config.env')
@@ -217,14 +218,21 @@ def dataLogSequence4Therad(multiplyer):
                         csvRead2Up()
                     dataSending(data)
                 break
-
+            
+def updateThread():
+    while True:
+        autoUpdate.update_sequence()
+        time.sleep(900)
+        
 def main(multiplyer):
     try:
         conStatus()
         TButton = threading.Thread(target=buttonDetect4Theread)
         TDataLog = threading.Thread(target=dataLogSequence4Therad, args=(multiplyer,))
+        TUpdateLookUp = threading.Thread(target=updateThread)
         TDataLog.start()
         TButton.start()
+        TUpdateLookUp.start()
         
     except:
         ledoffFlipper(leds[0])

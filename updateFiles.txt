@@ -1,0 +1,7 @@
+AutoUpdateLib\autoUpdate.py
+AutoUpdateLib\AutoUpdateLib.py
+LCDImports\AutoUpdateLib.py
+LCDImports\PCF8574.py
+Setup\configSetUp.py
+PiMon_Main.py
+requirements.txt
