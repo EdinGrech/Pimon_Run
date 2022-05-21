@@ -17,7 +17,7 @@ from LCDImports.PCF8574 import PCF8574_GPIO
 from LCDImports.Adafruit_LCD1602 import Adafruit_CharLCD
 import threading
 from dotenv import load_dotenv
-import AutoUpdateLib.autoUpdate as autoUpdate
+import AutoUpdateLib_.autoUpdate as autoUpdate
 
 THINGSBOARD_HOST = 'demo.thingsboard.io'
 load_dotenv('Pimon_Run/config.env')
