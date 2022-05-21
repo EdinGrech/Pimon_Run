@@ -34,7 +34,12 @@ fields = ["Date Time", "Temperature", "Humidity", "Pressure", "Light"]
 buttonPin = 12 #set pin
 LDRpin = 6 #set pin
 
-dhtDevice = adafruit_dht.DHT11(4)
+while True:
+    try:
+        dhtDevice = adafruit_dht.DHT11(4)
+        break
+    except:
+        pass
 
 bmp = BMP085.BMP085()
 

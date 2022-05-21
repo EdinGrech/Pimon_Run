@@ -3,7 +3,6 @@ import os
 import sys
 import pathlib
 path = str(f"{pathlib.Path().resolve()}/Pimon_Run")
-print(path)
 url_mothership = "https://raw.githubusercontent.com/EdinGrech/Pimon_Run/master/"
 AutoUpdateLib.set_url("https://raw.githubusercontent.com/EdinGrech/Pimon_Run/master/version.txt")
 
