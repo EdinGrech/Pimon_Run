@@ -1,8 +1,9 @@
 import AutoUpdateLib_.AutoUpdateLib as AutoUpdateLib
-import subprocess
+import os
 import sys
 import pathlib
 path = str(f"{pathlib.Path().resolve()}/Pimon_Run")
+print(path)
 url_mothership = "https://raw.githubusercontent.com/EdinGrech/Pimon_Run/master/"
 AutoUpdateLib.set_url("https://raw.githubusercontent.com/EdinGrech/Pimon_Run/master/version.txt")
 
@@ -34,7 +35,7 @@ def update_sequence():
             f.write(AutoUpdateLib.get_latest_version())
             f.close()
         print("Update complete")
-        subprocess.Popen(str(f"{path}/PiMon_Main.py")) #and we start the new version
-        sys.exit(exit_code=0)
+        os.system(str(f"{path}/PiMon_Main.py")) #and we start the new version
+        exit()
 
         
