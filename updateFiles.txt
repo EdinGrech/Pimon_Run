@@ -1,6 +1,6 @@
 AutoUpdateLib_/autoUpdate.py
 AutoUpdateLib_/AutoUpdateLib.py
-LCDImports/AutoUpdateLib.py
+LCDImports/Adafruit_LCD1602.py
 LCDImports/PCF8574.py
 Setup/configSetUp.py
 PiMon_Main.py
