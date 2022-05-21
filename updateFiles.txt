@@ -1,5 +1,5 @@
-AutoUpdateLib/autoUpdate.py
-AutoUpdateLib/AutoUpdateLib.py
+AutoUpdateLib_/autoUpdate.py
+AutoUpdateLib_/AutoUpdateLib.py
 LCDImports/AutoUpdateLib.py
 LCDImports/PCF8574.py
 Setup/configSetUp.py
