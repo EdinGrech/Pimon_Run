@@ -41,7 +41,6 @@ bmp = BMP085.BMP085()
 leds = [20,21] #set pins [0] red-pow [1] green-network
 
 
-
 def startUpSweep():
     ledoffFlipper(leds[0])
     ledoffFlipper(leds[1])
@@ -108,18 +107,22 @@ def csvRead2Up():
     os.remove(data2_file_path)
 
 def dataSending(data):
-    ''' Sending humidity and temperature data to ThingsBoard
-     change path - look up more documentation on mqtt
-     changing the data array into a dictionary'''
+    ''' 
+    Sending humidity and temperature data to ThingsBoard
+    change path - look up more documentation on mqtt
+    changing the data array into a dictionary
+    '''
+
     fields = ["Date Time", "Temperature", "Humidity", "Pressure", "Light"]
     data = dict(zip(fields, data))
     client.publish('v1/devices/me/telemetry', json.dumps(data), 1)
 
 def destroyDisp():
+    mcp.output(3,0)
     lcd.clear()
 
 def display(data):
-    mcp.output(3,1)# turn on LCD backlight
+    mcp.output(3,1) # turn on LCD backlight
     lcd.begin(16,2)
     ft = round(time.time())+20
     for item in data:
@@ -135,7 +138,6 @@ def display(data):
                 break
             if time.time()>= ft:
                 break
-    mcp.output(3,0)
     destroyDisp()
 
 def dataPullSort():
@@ -145,7 +147,6 @@ def dataPullSort():
 
     while True:
         DHTData = DHTcall()
-        time.sleep(0.1)
         if DHTcall()!="Error":
             break
 
@@ -167,7 +168,6 @@ def ledoffFlipper(ledF):
     GPIO.output(ledF, GPIO.LOW)
 
 def conStatus():
-    print("Attempring to connect")
     if(startConnection()==False):
         req = requests.get('http://clients3.google.com/generate_204')
         if req.status_code != 204:
@@ -181,13 +181,11 @@ def setup():
         GPIO.setup(leds[x], GPIO.OUT)
 
 def buttonDetect4Theread():
-    print("Button Thread active")
     mcp.output(3,1)
     lcd.begin(16,2)
     lcd.setCursor(2,0)
     lcd.message("Threads OK")
     time.sleep(2)
-    mcp.output(3,0)
     destroyDisp()
 
     GPIO.setup(buttonPin, GPIO.IN, pull_up_down=GPIO.PUD_UP)
@@ -199,7 +197,7 @@ def buttonDetect4Theread():
 
 def dataLogSequence4Therad(multiplyer):
     while True:
-        ft = round(time.time())+60*60*multiplyer
+        ft = round(time.time())+multiplyer
         while True:
             if time.time()>= ft:
                 #callsorter,logsend
@@ -251,9 +249,8 @@ def bootSetUpStatus():
     time.sleep(2)
     lcd.clear()
     lcd.setCursor(4,0)
-    lcd.message("status ok")
+    lcd.message("Status OK")
     time.sleep(4)
-    mcp.output(3,0)
     destroyDisp()
 
 try:
@@ -261,7 +258,7 @@ try:
 except:
     pass
 bootSetUpStatus()
-main(0.001)
+main(5) #every 5 seconds data is logged
 
 
 
