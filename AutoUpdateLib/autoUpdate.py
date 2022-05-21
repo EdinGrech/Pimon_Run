@@ -4,7 +4,7 @@ import sys
 import pathlib
 path = pathlib.Path().resolve()
 url_mothership = "https://raw.githubusercontent.com/EdinGrech/Pimon_Run/master/"
-AutoUpdate.set_url("https://github.com/EdinGrech/Pimon_Run/blob/master/version.txt")
+AutoUpdate.set_url("https://raw.githubusercontent.com/EdinGrech/Pimon_Run/master/version.txt")
 
 def get_update_file_list():
     update_list = [] #"file names"
