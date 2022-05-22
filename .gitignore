@@ -1,1 +1,3 @@
 config.env
+# Byte-compiled / optimized
+__pycache__/
