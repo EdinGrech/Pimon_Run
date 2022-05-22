@@ -34,7 +34,7 @@ def update_sequence():
             f.write(AutoUpdateLib.get_latest_version())
             f.close()
         print("Update complete")
-        os.system(str(f"{path}/PiMon_Main.py")) #and we start the new version
-        exit()
+        os.system('{} {}'.format('python', str(f"{path}/PiMon_Main.py"))) #os.system(str(f"{path}/PiMon_Main.py")) #and we start the new version
+        os._exit(1)
 
         
