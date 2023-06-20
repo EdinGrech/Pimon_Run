@@ -28,7 +28,7 @@ python-apt                 ==2.2.1
 python-dateutil            ==2.8.2
 python-dotenv              ==0.20.0
 pyusb                      ==1.2.1
-requests                   ==2.25.1
+requests                   ==2.31.0
 rpi-ws281x                 ==4.3.3
 RPi.GPIO                   ==0.7.1
 setuptools                 ==60.10.0
